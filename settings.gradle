@@ -1,4 +1,4 @@
-include ':library'
+include ':proxy_aar'
 
 dependencyResolutionManagement {
     repositoriesMode.set(RepositoriesMode.FAIL_ON_PROJECT_REPOS)
