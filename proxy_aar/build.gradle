@@ -20,7 +20,7 @@ android {
 }
 
 dependencies {
-    implementation files('libs/proxy.aar')
+    embed project(':proxy_wrapper')
 }
 
 publishing {
