@@ -1,36 +1,11 @@
-group = 'com.github.wanliyunyan'
-
-apply plugin: 'com.android.library'
-
-android {
-    namespace = "com.wanliyunyan.proxy_aar"
-    compileSdk = 33
-
-    defaultConfig {
-        minSdk = 21
-        targetSdk = 33
+buildscript {
+    ext.kotlin_version = "1.8.20"
+    repositories {
+        google()
+        mavenCentral()
     }
-
-    lintOptions {
-        abortOnError false
+    dependencies {
+        classpath 'com.android.tools.build:gradle:8.0.2'
+        classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
     }
-
-    sourceSets {
-        main {
-            java.srcDirs = []
-            manifest.srcFile 'src/main/AndroidManifest.xml'
-        }
-    }
-}
-
-repositories {
-    google()
-    mavenCentral()
-    flatDir {
-        dirs 'libs'  // 告诉 Gradle 从 libs/ 目录加载 .aar
-    }
-}
-
-dependencies {
-    implementation(name: 'proxy', ext: 'aar')
 }

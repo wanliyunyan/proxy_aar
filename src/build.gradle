@@ -1,0 +1,38 @@
+plugins {
+    id 'com.android.library'
+    id 'maven-publish'
+}
+
+android {
+    namespace 'com.wayl.sdk'
+    compileSdk 34
+
+    defaultConfig {
+        minSdk 24
+    }
+
+    // 无需源码，关闭构建源码过程
+    buildTypes {
+        release {
+            consumerProguardFiles "consumer-rules.pro"
+        }
+    }
+}
+
+dependencies {
+    implementation files('libs/proxy.aar')
+}
+
+publishing {
+    publications {
+        release(MavenPublication) {
+            groupId = 'com.wayl'
+            artifactId = 'sdk'
+            version = '1.2.1'
+
+            afterEvaluate {
+                from components.release
+            }
+        }
+    }
+}
